@@ -14,4 +14,5 @@
     <string name="request">Request</string>
     <string name="notes">Notes</string>
     <string name="search_your_notes">Search your notes</string>
+    <string name="create_new_note">Create new note</string>
 </resources>
