@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/onboardingFragment">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.faithdeveloper.noted.ui.fragments.OnboardingFragment"
+        android:label="onboarding_screen"
+        tools:layout="@layout/onboarding_screen" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.faithdeveloper.noted.ui.fragments.NotesFragment"
+        android:label="notes_list"
+        tools:layout="@layout/notes_list" >
+        <action
+            android:id="@+id/action_notesFragment_to_noteWriteFragment"
+            app:destination="@id/noteWriteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteWriteFragment"
+        android:name="com.faithdeveloper.noted.ui.fragments.NoteWriteFragment"
+        android:label="write_note"
+        tools:layout="@layout/write_note" />
+</navigation>
