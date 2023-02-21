@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         checkIfUserExists(auth.currentUser)
     }
-    private fun checkIfUserExists(currentUser: FirebaseUser?) = if (currentUser != null){
+    private fun checkIfUserExists(currentUser: FirebaseUser?) = if (currentUser != null && currentUser.isEmailVerified){
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
