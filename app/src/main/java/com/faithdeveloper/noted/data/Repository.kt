@@ -13,4 +13,13 @@ object Repository {
     suspend fun verifyEmail(currentUser:FirebaseUser) {
         currentUser.sendEmailVerification().await()
     }
+
+    suspend fun signIn(auth: FirebaseAuth, email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password).await()
+    }
+
+    suspend fun forgotPassword(auth:FirebaseAuth, email:String) {
+        auth.sendPasswordResetEmail(email).await()
+
+    }
 }

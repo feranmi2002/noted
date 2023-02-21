@@ -1,10 +1,10 @@
 package com.faithdeveloper.noted.ui.bottomsheets
 
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +12,17 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.util.PatternsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.faithdeveloper.noted.R
 import com.faithdeveloper.noted.data.Result
 import com.faithdeveloper.noted.data.viewmodels.OnBoardingViewModel
 import com.faithdeveloper.noted.databinding.BottomSheetBinding
+import com.faithdeveloper.noted.ui.fragments.OnboardingFragmentDirections
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import java.util.*
 
 class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
     private var _binding: BottomSheetBinding? = null
@@ -44,10 +49,6 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         loadView()
         observeViewModel()
-        signUp()
-        signIn()
-
-
     }
 
     private fun loadView() {
@@ -62,7 +63,9 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         binding.signIn.signIn.isVisible = true
         binding.signUp.signUp.isVisible = false
         binding.verification.verification.isVisible = false
+        forgotPassword()
         signInWatchers()
+        signIn()
 
     }
 
@@ -71,6 +74,7 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         binding.signUp.signUp.isVisible = true
         binding.verification.verification.isVisible = false
         signUpWatchers()
+        signUp()
 
     }
 
@@ -78,6 +82,7 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         binding.signIn.signIn.isVisible = false
         binding.signUp.signUp.isVisible = false
         binding.verification.verification.isVisible = true
+        verifyEmail()
 
     }
 
@@ -236,9 +241,13 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         }
     }
 
-    private fun signIn(){
+    private fun signIn() {
         binding.signIn.continued.setOnClickListener {
             "Signing you in".showProcessDialog()
+            viewModel.signIn(
+                binding.signIn.emailLayout.editText?.text!!.trim().toString(),
+                binding.signIn.passwordLayout.editText?.text!!.trim().toString()
+            )
         }
     }
 
@@ -247,56 +256,139 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
             alertDialog?.dismiss()
             when (it) {
                 is Result.Success -> when (it.msg) {
-                    SIGN_UP_FLAG -> signUpSuccessful()
                     SIGN_IN_FLAG -> signInSuccessful()
                     VERIFICATION_FLAG -> verificationSuccessful()
+                    PASSWORD_FLAG -> passwordSuccessful()
                 }
 
                 is Result.Failure -> when (it.msg) {
                     SIGN_UP_FLAG -> signUpFailure(it.data as Exception)
                     SIGN_IN_FLAG -> signInFailure()
                     VERIFICATION_FLAG -> verificationFailure()
+                    PASSWORD_FLAG -> passwordFailure()
                 }
             }
         }
+
+        viewModel.timer.observe(viewLifecycleOwner) {
+            if (it < 1) {
+                enableVerification()
+            } else {
+                binding.verification.timer.text = formatTime(it)
+            }
+
+        }
+    }
+
+    private fun enableVerification() {
+        binding.verification.requestForVerificationLink.isEnabled = true
+        binding.verification.timer.isVisible = false
+        binding.verification.information.text =
+            "Click RESEND to resend verification link to ${viewModel.auth.currentUser!!.email}"
+    }
+
+    private fun passwordSuccessful() {
+        "We have sent a password reset link to ${
+            binding.signIn.emailLayout.editText?.text!!.trim()
+        }".messageDialog()
+
+    }
+
+    private fun passwordFailure() {
+        "We couldn't send a reset link. Please try again.".messageDialog()
     }
 
 
     private fun verificationFailure() {
-
+        loadVerificationFailure()
     }
 
     private fun signInFailure() {
-        "Sign in failed".failureDialog()
+        "Sign in failed".messageDialog()
     }
 
-    private fun signUpFailure(e:Exception) {
-        when(e){
-            is FirebaseAuthUserCollisionException ->  "This email is already in use".failureDialog()
-            else -> "Sign up failed".failureDialog()
+    private fun signUpFailure(e: Exception) {
+        when (e) {
+            is FirebaseAuthUserCollisionException -> "This email is already in use".messageDialog()
+            else -> "Sign up failed".messageDialog()
         }
     }
 
-    private fun verificationSuccessful() {
+    private fun loadVerificationFailure() {
+        loadVerification()
+        binding.verification.title.text = when (flag) {
+            SIGN_IN_FLAG -> "Signed In Successfully"
+            else -> "Signed Up Successfully"
+        }
+        binding.verification.information.text =
+            "We couldn't verify your email. Click REQSEND to try again"
+        binding.verification.requestForVerificationLink.isEnabled = true
+        binding.verification.timer.isVisible = false
 
     }
+
+    private fun verificationSuccessful() {
+        loadVerificationSuccess(viewModel.auth.currentUser!!.email!!)
+    }
+
+    private fun loadVerificationSuccess(email: String) {
+        loadVerification()
+        binding.verification.information.text = resources.getString(R.string.verification).format(
+            Locale.ENGLISH, email
+        )
+        binding.verification.requestForVerificationLink.isEnabled = false
+        binding.verification.title.text = when (flag) {
+            SIGN_IN_FLAG -> "Signed In Successfully"
+            else -> "Signed Up Successfully"
+        }
+        viewModel.startTimer()
+    }
+
+    private fun verifyEmail() {
+        binding.verification.requestForVerificationLink.setOnClickListener {
+            "Verifying your email...".showProcessDialog()
+            viewModel.verifyEmail()
+        }
+    }
+
+    private fun formatTime(time: Long) = time.toString()
 
     private fun signInSuccessful() {
-
+        findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToNotesFragment())
     }
 
-    private fun signUpSuccessful() {
-        loadVerification()
+
+    private fun forgotPassword() {
+        binding.signIn.forgotPassword.setOnClickListener {
+            if (!Patterns.EMAIL_ADDRESS.matcher(
+                    binding.signIn.emailLayout.editText?.text!!.trim().toString()
+                ).matches()
+            ) {
+                Snackbar.make(
+                    binding.signIn.forgotPassword,
+                    "Enter valid email",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            } else {
+                "Sending password reset link to ${
+                    binding.signIn.emailLayout.editText?.text!!.trim().toString()
+                }".showProcessDialog()
+                viewModel.forgotPassword(
+                    binding.signIn.emailLayout.editText?.text!!.trim().toString()
+                )
+            }
+        }
     }
 
     private fun String.showProcessDialog() {
         val materialDialogBuilder = MaterialAlertDialogBuilder(requireContext())
             .setMessage(this)
+            .setCancelable(false)
         alertDialog = materialDialogBuilder.create()
         alertDialog?.show()
     }
 
-    private fun String.failureDialog() {
+    private fun String.messageDialog() {
         val materialDialogBuilder = MaterialAlertDialogBuilder(requireContext())
             .setMessage(this)
             .setPositiveButton("OK") { dialog, which ->
@@ -318,6 +410,7 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         const val SIGN_IN_FLAG = "sign_in"
         const val VERIFICATION_FLAG = "verification"
         const val PASSWORD_COUNT = 6
+        const val PASSWORD_FLAG = "password"
         fun getButtomSheet(flag: String) = BottomSheet(flag)
     }
 }
