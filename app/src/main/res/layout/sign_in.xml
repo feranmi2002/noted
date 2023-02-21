@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColor="#F8CC1D"
             tools:text="oluwaoyehunferanmi@gmail.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +47,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColor="#F8CC1D"
             tools:text="Faith" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +57,7 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:layout_marginTop="8dp"
-        android:text="@string/_continue"
+        android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/forgot_password" />
