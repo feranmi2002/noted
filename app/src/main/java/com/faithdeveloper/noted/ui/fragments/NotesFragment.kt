@@ -12,8 +12,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.faithdeveloper.noted.databinding.NotesListBinding
+import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.ui.adapters.NotePagingAdapter
 import com.faithdeveloper.noted.ui.utils.Util.getIfUserDataIsUploaded
+import com.faithdeveloper.noted.ui.utils.Util.userDataUploaded
 import com.faithdeveloper.noted.viewmodels.NotesListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -22,7 +24,7 @@ import kotlinx.coroutines.launch
 class NotesFragment : Fragment() {
     private var _binding: NotesListBinding? = null
     private lateinit var adapter: NotePagingAdapter
-    private val viewModel: NotesListViewModel by viewModels{NotesListViewModel.Factory}
+    private val viewModel: NotesListViewModel by viewModels { NotesListViewModel.Factory }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,7 +32,9 @@ class NotesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = NotePagingAdapter()
+        adapter = NotePagingAdapter(){
+            findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToNoteWriteFragment(it))
+        }
 
     }
 
@@ -48,6 +52,7 @@ class NotesFragment : Fragment() {
         observer()
         loadState()
         newNote()
+        checkIfUserDataIsUploaded()
     }
 
     private fun setUpRecyclerView() {
@@ -66,25 +71,37 @@ class NotesFragment : Fragment() {
         lifecycleScope.launch {
             adapter.loadStateFlow.collectLatest { loadState ->
                 binding.emptyNote.emptyNote.isVisible =
-                    loadState.source.refresh is LoadState.NotLoading && adapter.itemCount < 1
+                    loadState.refresh is LoadState.NotLoading && adapter.itemCount < 1
                 binding.notesLoading.notesLoading.isVisible =
-                    loadState.source.refresh is LoadState.NotLoading
+                    loadState.refresh is LoadState.Loading
             }
         }
     }
 
-    private fun newNote(){
+    private fun newNote() {
         binding.createNote.setOnClickListener {
-            findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToNoteWriteFragment())
+            findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToNoteWriteFragment(
+                Note()
+            ))
         }
     }
 
-    private fun checkIfUserDataIsUploaded(){
+    private fun checkIfUserDataIsUploaded() {
         requireContext().getIfUserDataIsUploaded().run {
-            if (!this) viewModel.uploadUserData()
+            if (!this) {
+                viewModel.uploadUserData()
+                lifecycleScope.launch {
+                    requireContext().userDataUploaded()
+                }
+
+            }
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        adapter.refresh()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

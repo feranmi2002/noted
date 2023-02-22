@@ -1,16 +1,20 @@
 package com.faithdeveloper.noted.models
 
+import android.os.Parcelable
 import com.google.firebase.firestore.ServerTimestamp
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
+
+@Parcelize
 data class Note(
-    val id:String,
+    var id:String,
     @ServerTimestamp
-    val dateCreated :Date?,
+    var dateCreated :Date?,
     @ServerTimestamp
-    val lastUpdated: Date?,
-    val title:String,
-    val note:String
-){
+    var lastUpdated: Date?,
+    var title:String,
+    var note:String
+): Parcelable{
     constructor():this("", null, null, "", "")
 }

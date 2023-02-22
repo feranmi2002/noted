@@ -51,7 +51,11 @@ object Repository {
                 .limit(size).startAfter(lastDocumentSnapshot)
         }
         val result = query.get().await()
-        return PagerResult(result.last(), formatSnapshots(result))
+        return PagerResult(
+            if (!result.isEmpty) result.last()
+            else null, if (!result.isEmpty) formatSnapshots(result)
+            else listOf()
+        )
     }
 
     private fun formatSnapshots(documents: QuerySnapshot) =
@@ -67,5 +71,17 @@ object Repository {
         database.collection(USERS).document(userUid).set(
             User(userUid, email)
         )
+    }
+
+    fun save(userUid: String, note: Note, database: FirebaseFirestore) {
+        database.collection(USERS).document(userUid).collection(NOTES).add(note.apply {
+            if (id.isEmpty()) id = userUid + System.currentTimeMillis()
+        })
+    }
+
+    fun deleteNotes(userUid: String, idOfNotes:List<String>, database: FirebaseFirestore){
+        idOfNotes.onEach {
+            database.collection(USERS).document(userUid).collection(NOTES).document().delete()
+        }
     }
 }

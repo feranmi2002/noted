@@ -19,21 +19,37 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad4e2df5-a03a-4e87-9d80-19ec4b4afdad" name="Changes" comment="Worked on displaying the notes">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/models/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/utils/Util.kt" afterDir="false" />
+    <list default="true" id="ad4e2df5-a03a-4e87-9d80-19ec4b4afdad" name="Changes" comment="Fixed a bug about not checking if user Data has been previously uploaded">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/NotedApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/NotedApplication.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/models/Note.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/models/Note.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/adapters/NotePagingAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/adapters/NotePagingAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NoteWriteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NoteWriteFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/utils/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/utils/Util.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/action_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/action_toolbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notes_list_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notes_list_toolbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/app_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/app_nav.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[0629837167012158]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -342,7 +358,28 @@
       <option name="project" value="LOCAL" />
       <updated>1677041842811</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Implemented uploading user data after registration">
+      <created>1677046713197</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1677046713197</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Updated paging adapter">
+      <created>1677047225045</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1677047225045</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fixed a bug about not checking if user Data has been previously uploaded">
+      <created>1677051635823</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1677051635823</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -411,7 +448,10 @@
     <MESSAGE value="Improved sign in, sign up and verification ui." />
     <MESSAGE value="Implemented process for retrieving notes" />
     <MESSAGE value="Worked on displaying the notes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on displaying the notes" />
+    <MESSAGE value="Implemented uploading user data after registration" />
+    <MESSAGE value="Updated paging adapter" />
+    <MESSAGE value="Fixed a bug about not checking if user Data has been previously uploaded" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug about not checking if user Data has been previously uploaded" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -478,13 +518,58 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>366</line>
+          <line>367</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>372</line>
+          <line>373</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt</url>
+          <line>28</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt</url>
+          <line>53</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt</url>
+          <line>61</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt</url>
+          <line>90</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt</url>
+          <line>91</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt</url>
+          <line>70</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt</url>
+          <line>20</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt</url>
+          <line>21</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt</url>
+          <line>22</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

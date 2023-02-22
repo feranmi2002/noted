@@ -18,7 +18,7 @@ class NotesListPagingSource(private val repository: Repository, val database: Fi
     override suspend fun load(params: LoadParams<DocumentSnapshot>): LoadResult<DocumentSnapshot, Note> {
         return try {
             val notes = repository.getNotes(database, PAGE_SIZE, params.key, userUid)
-            val nextKey = if (notes.notes.size <= 30) null
+            val nextKey = if (notes.notes.size <= 30 ) null
             else notes.lastDocumentSnapshot
             LoadResult.Page(
                 data = notes.notes,

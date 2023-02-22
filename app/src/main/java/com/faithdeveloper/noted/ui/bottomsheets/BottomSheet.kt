@@ -355,6 +355,7 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
 
     private fun signInSuccessful() {
         findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToNotesFragment())
+        dismiss()
     }
 
 
