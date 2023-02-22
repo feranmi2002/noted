@@ -32,10 +32,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     override fun onResume() {
-        auth.currentUser?.reload()
-        if (auth.currentUser != null && auth.currentUser!!.isEmailVerified) {
-            navController.navigate(OnboardingFragmentDirections.actionOnboardingFragmentToNotesFragment())
-        }
         super.onResume()
     }
 }

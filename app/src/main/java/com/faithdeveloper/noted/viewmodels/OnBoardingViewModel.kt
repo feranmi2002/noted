@@ -1,4 +1,4 @@
-package com.faithdeveloper.noted.data.viewmodels
+package com.faithdeveloper.noted.viewmodels
 
 import android.os.CountDownTimer
 import androidx.lifecycle.*
@@ -109,20 +109,6 @@ class OnBoardingViewModel(
                 ) as T
             }
         }
-//        val Factory: ViewModelProvider.Factory = viewModelFactory {
-//            initializer {
-//                val savedStateHandle = createSavedStateHandle()
-//                val repository = (this[APPLICATION_KEY] as NotedApplication).repository
-//                val auth = (this[APPLICATION_KEY] as NotedApplication).auth
-//                val database = (this[APPLICATION_KEY] as NotedApplication).database
-//                OnBoardingViewModel(
-//                    repository = repository,
-//                    auth = auth,
-//                    database = database
-//                )
-//            }
-//        }
-//
     }
 
 }
