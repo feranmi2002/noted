@@ -19,11 +19,8 @@ class NotePagingAdapter : PagingDataAdapter<Note, NotePagingAdapter.NoteViewHold
             binding.noteExtract.text = note.note
             binding.title.text = note.title
             binding.date.text = Util.formatDate(note.lastUpdated)
-
         }
-
     }
-
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.bind(getItem(position)!!)
     }
