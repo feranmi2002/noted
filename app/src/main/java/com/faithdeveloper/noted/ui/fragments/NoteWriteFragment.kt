@@ -112,7 +112,7 @@ class NoteWriteFragment : Fragment() {
                 .setMessage("Do you want to discard this note? You won't be able to retrieve it again")
                 .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
                     saveNote = false
-                    if (note.id.isEmpty()) backPressedCallback?.handleOnBackPressed()
+                    if (note.trackingId.isEmpty()) backPressedCallback?.handleOnBackPressed()
                     else {
                         application.deleteNote(listOf(note.trackingId))
                         backPressedCallback?.handleOnBackPressed()
