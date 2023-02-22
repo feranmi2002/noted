@@ -2,6 +2,7 @@ package com.faithdeveloper.noted.data
 
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.models.PagerResult
+import com.faithdeveloper.noted.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
@@ -12,10 +13,10 @@ import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
 
 object Repository {
-    const val USER_IDS = "users_ids"
-    const val USER = "user"
-    const val NOTES = "notes"
-    const val LAST_UPDATED = "lastUpdated"
+    private const val USER_IDS = "users_ids"
+    private const val USERS = "users"
+    private const val NOTES = "notes"
+    private const val LAST_UPDATED = "lastUpdated"
 
     suspend fun signUp(auth: FirebaseAuth, email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password).await()
@@ -37,14 +38,15 @@ object Repository {
     suspend fun getNotes(
         database: FirebaseFirestore,
         size: Long,
-        lastDocumentSnapshot: DocumentSnapshot?
+        lastDocumentSnapshot: DocumentSnapshot?,
+        userUid: String
     ): PagerResult {
         val query = if (lastDocumentSnapshot == null) {
-            database.collection(USER_IDS).document().collection(NOTES)
+            database.collection(USERS).document(userUid).collection(NOTES)
                 .orderBy(LAST_UPDATED, Query.Direction.DESCENDING)
                 .limit(size)
         } else {
-            database.collection(USER_IDS).document().collection(NOTES)
+            database.collection(USERS).document(userUid).collection(NOTES)
                 .orderBy(LAST_UPDATED, Query.Direction.DESCENDING)
                 .limit(size).startAfter(lastDocumentSnapshot)
         }
@@ -56,4 +58,14 @@ object Repository {
         documents.map { documentSnapshot ->
             documentSnapshot.toObject<Note>()
         }
+
+    fun uploadUserData(
+        userUid: String,
+        email: String,
+        database: FirebaseFirestore
+    ) {
+        database.collection(USERS).document(userUid).set(
+            User(userUid, email)
+        )
+    }
 }

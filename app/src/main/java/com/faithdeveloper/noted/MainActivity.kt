@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.faithdeveloper.noted.ui.fragments.OnboardingFragmentDirections
+import com.faithdeveloper.noted.ui.utils.Util
+import com.faithdeveloper.noted.ui.utils.Util.getIfUserDataIsUploaded
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore

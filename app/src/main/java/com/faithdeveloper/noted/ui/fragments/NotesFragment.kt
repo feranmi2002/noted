@@ -13,6 +13,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.faithdeveloper.noted.databinding.NotesListBinding
 import com.faithdeveloper.noted.ui.adapters.NotePagingAdapter
+import com.faithdeveloper.noted.ui.utils.Util.getIfUserDataIsUploaded
 import com.faithdeveloper.noted.viewmodels.NotesListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ import kotlinx.coroutines.launch
 class NotesFragment : Fragment() {
     private var _binding: NotesListBinding? = null
     private lateinit var adapter: NotePagingAdapter
-    private val viewModel: NotesListViewModel by viewModels()
+    private val viewModel: NotesListViewModel by viewModels{NotesListViewModel.Factory}
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -75,6 +76,12 @@ class NotesFragment : Fragment() {
     private fun newNote(){
         binding.createNote.setOnClickListener {
             findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToNoteWriteFragment())
+        }
+    }
+
+    private fun checkIfUserDataIsUploaded(){
+        requireContext().getIfUserDataIsUploaded().run {
+            if (!this) viewModel.uploadUserData()
         }
     }
 

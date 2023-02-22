@@ -21,7 +21,7 @@ import java.util.logging.SimpleFormatter
 class OnBoardingViewModel(
     val repository: Repository,
     val auth: FirebaseAuth,
-    database: FirebaseFirestore
+    val database: FirebaseFirestore
 ) : ViewModel() {
 
     private val _result: MutableLiveData<Result> = MutableLiveData()
@@ -49,6 +49,7 @@ class OnBoardingViewModel(
             try {
                 repository.verifyEmail(auth.currentUser!!)
                 _result.value = Result.Success(null, VERIFICATION_FLAG)
+
             } catch (e: Exception) {
                 _result.value = Result.Failure(e, VERIFICATION_FLAG)
             }

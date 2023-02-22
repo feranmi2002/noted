@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.faithdeveloper.noted.databinding.NoteListItemBinding
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.ui.utils.NotesDiffUtil
+import com.faithdeveloper.noted.ui.utils.Util
 
 class NotePagingAdapter : PagingDataAdapter<Note, NotePagingAdapter.NoteViewHolder>(
     NotesDiffUtil
@@ -17,7 +18,7 @@ class NotePagingAdapter : PagingDataAdapter<Note, NotePagingAdapter.NoteViewHold
         fun bind(note: Note) {
             binding.noteExtract.text = note.note
             binding.title.text = note.title
-            binding.date.text = note.lastUpdated
+            binding.date.text = Util.formatDate(note.lastUpdated)
 
         }
 
