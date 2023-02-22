@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533328093356",
+    "project_id": "noted-35b7a",
+    "storage_bucket": "noted-35b7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533328093356:android:b689ac8729807810f73f09",
+        "android_client_info": {
+          "package_name": "com.faithdeveloper.noted"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533328093356-b89cclc910beev3ptijoomev8o6fslbg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxD-SwK4Lz2TWZuZshcMSokSGG_LIYILM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533328093356-b89cclc910beev3ptijoomev8o6fslbg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

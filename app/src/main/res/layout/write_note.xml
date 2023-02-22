@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.fragments.NoteWriteFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/back"
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintEnd_toStartOf="@id/delete"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_share_24" />
@@ -41,6 +43,7 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
@@ -73,9 +76,14 @@
         android:layout_height="0dp"
         android:autoLink="all"
         android:background="@drawable/note_title_background"
+        android:breakStrategy="high_quality"
+        android:clickable="false"
         android:fontFamily="@font/sarabun_light"
         android:gravity="top|start"
         android:hint="@string/note"
+        android:lineBreakStyle="strict"
+        android:lineBreakWordStyle="phrase"
+        android:linksClickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/note_title"
         tools:text="@tools:sample/lorem/random" />

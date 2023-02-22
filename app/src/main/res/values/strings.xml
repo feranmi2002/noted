@@ -11,10 +11,15 @@
     <string name="by_continuing_you_agree_to_our_terms_conditions_and_privacy_policy">By continuing, you agree to our Terms,Conditions and Privacy Policy</string>
     <string name="_continue">Continue</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name="request">Request</string>
+    <string name="resend">Resend</string>
     <string name="notes">Notes</string>
     <string name="search_your_notes">Search your notes</string>
     <string name="create_new_note">Create new note</string>
     <string name="title">Title</string>
     <string name="note">Note</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="verification">We have sent a link to verify your email %1$s. Verify to continue</string>
+    <string name="getting_your_notes">Getting your notes..</string>
+    <string name="you_have_no_notes">You have no notes</string>
 </resources>

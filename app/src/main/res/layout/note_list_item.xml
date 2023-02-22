@@ -7,6 +7,8 @@
     android:background="@drawable/search_background"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
+    android:id="@+id/note_list_item"
+    android:longClickable="true"
     android:layout_marginBottom="8dp">
 
     <com.google.android.material.textview.MaterialTextView
@@ -16,6 +18,7 @@
         android:padding="4dp"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/title_text_color"
         app:fontFamily="@font/sarabun_extra_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +40,7 @@
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         android:paddingBottom="4dp"
+        android:textColor="@color/extract_text_color"
         app:fontFamily="@font/sarabun_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
@@ -46,7 +50,7 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#83000000"
+        android:textColor="@color/date_text_color"
         android:textSize="13sp"
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
