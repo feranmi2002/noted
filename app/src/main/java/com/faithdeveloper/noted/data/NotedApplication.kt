@@ -25,4 +25,12 @@ class NotedApplication : Application() {
     fun save(note: Note) {
         repository.save(auth.currentUser!!.uid, note,  database)
     }
+
+    fun deleteNote(ids:List<String>) {
+        repository.deleteNotes(auth.currentUser!!.uid, ids, database)
+    }
+
+    fun update(note: Note) {
+        repository.update(auth.currentUser!!.uid, note,  database)
+    }
 }

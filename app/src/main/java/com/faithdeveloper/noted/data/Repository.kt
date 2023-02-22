@@ -11,6 +11,7 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
+import java.util.*
 
 object Repository {
     private const val USER_IDS = "users_ids"
@@ -60,7 +61,10 @@ object Repository {
 
     private fun formatSnapshots(documents: QuerySnapshot) =
         documents.map { documentSnapshot ->
-            documentSnapshot.toObject<Note>()
+            val note = documentSnapshot.toObject<Note>()
+            note.apply {
+                trackingId = documentSnapshot.id
+            }
         }
 
     fun uploadUserData(
@@ -79,9 +83,19 @@ object Repository {
         })
     }
 
-    fun deleteNotes(userUid: String, idOfNotes:List<String>, database: FirebaseFirestore){
+    fun deleteNotes(userUid: String, idOfNotes: List<String>, database: FirebaseFirestore) {
         idOfNotes.onEach {
-            database.collection(USERS).document(userUid).collection(NOTES).document().delete()
+            database.collection(USERS).document(userUid).collection(NOTES).document(it).delete()
         }
+    }
+
+    fun update(uid: String, note: Note, database: FirebaseFirestore) {
+        database.collection(USERS).document(uid).collection(NOTES).document(note.trackingId).update(
+            mapOf(
+                "title" to note.title,
+                "note" to note.note,
+                "lastUpdated" to Date()
+            )
+        )
     }
 }

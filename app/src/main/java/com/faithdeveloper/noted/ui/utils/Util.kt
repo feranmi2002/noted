@@ -11,6 +11,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 object Util {
@@ -22,36 +23,46 @@ object Util {
         name = NOTED_PREFERENCES
     )
 
+    fun formatTime(milliseconds: Long) = String.format(
+        "0%2d:0%2d",
+        TimeUnit.MILLISECONDS.toMinutes(milliseconds),
+        TimeUnit.MILLISECONDS.toSeconds(milliseconds) - TimeUnit.MINUTES.toSeconds(
+            TimeUnit.MILLISECONDS.toMinutes(
+                milliseconds
+            )
+        )
+    )
 
-    fun formatDate(lastUpdated: Date?): String {
-        return SimpleDateFormat.getDateTimeInstance().format(lastUpdated?: Date())
+
+fun formatDate(lastUpdated: Date?): String {
+    return SimpleDateFormat.getDateTimeInstance().format(lastUpdated ?: Date())
+}
+
+fun getDateTime(): String {
+    val result: String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val formatter: DateTimeFormatter =
+            DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
+        LocalDateTime.now().format(formatter)
+    } else {
+        val date1 = Date()
+        SimpleDateFormat.getDateTimeInstance().format(date1)
     }
+    return result
 
-    fun getDateTime(): String {
-        val result: String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val formatter: DateTimeFormatter =
-                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
-            LocalDateTime.now().format(formatter)
-        } else {
-            val date1 = Date()
-            SimpleDateFormat.getDateTimeInstance().format(date1)
-        }
-        return result
+}
 
+suspend fun Context.userDataUploaded() {
+    dataStore.edit { mutablePreferences ->
+        mutablePreferences[USER_DETAILS_UPLOADED] = true
     }
+}
 
-    suspend fun Context.userDataUploaded() {
-        dataStore.edit { mutablePreferences ->
-            mutablePreferences[USER_DETAILS_UPLOADED] = true
-        }
+fun Context.getIfUserDataIsUploaded(): Boolean {
+    var userDataUploaded = false
+    dataStore.data.map { preferences ->
+        userDataUploaded = preferences[USER_DETAILS_UPLOADED] ?: false
     }
-
-    fun Context.getIfUserDataIsUploaded(): Boolean {
-        var userDataUploaded = false
-        dataStore.data.map { preferences ->
-            userDataUploaded = preferences[USER_DETAILS_UPLOADED] ?: false
-        }
-        return userDataUploaded
-    }
+    return userDataUploaded
+}
 
 }

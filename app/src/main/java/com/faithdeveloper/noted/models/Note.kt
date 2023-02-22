@@ -14,7 +14,8 @@ data class Note(
     @ServerTimestamp
     var lastUpdated: Date?,
     var title:String,
-    var note:String
+    var note:String,
+    var trackingId:String
 ): Parcelable{
-    constructor():this("", null, null, "", "")
+    constructor():this("", null, null, "", "", "")
 }

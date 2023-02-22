@@ -15,9 +15,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.faithdeveloper.noted.R
 import com.faithdeveloper.noted.data.Result
-import com.faithdeveloper.noted.viewmodels.OnBoardingViewModel
 import com.faithdeveloper.noted.databinding.BottomSheetBinding
 import com.faithdeveloper.noted.ui.fragments.OnboardingFragmentDirections
+import com.faithdeveloper.noted.ui.utils.Util.formatTime
+import com.faithdeveloper.noted.viewmodels.OnBoardingViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -212,13 +213,6 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
                         PatternsCompat.EMAIL_ADDRESS.matcher(
                             binding.signIn.emailLayout.editText?.text!!.trim()
                         ).matches()
-
-
-                binding.signIn.passwordLayout.error = if (s?.trim()!!.count() < PASSWORD_COUNT) {
-                    "Password is weak"
-                } else {
-                    null
-                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -350,8 +344,6 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
             viewModel.verifyEmail()
         }
     }
-
-    private fun formatTime(time: Long) = time.toString()
 
     private fun signInSuccessful() {
         findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToNotesFragment())

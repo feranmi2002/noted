@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:padding="16dp"
     tools:context=".ui.fragments.OnboardingFragment">
@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/onboarding_description"
-        android:textSize="18sp"
         android:textColor="#CE000000"
+        android:textSize="18sp"
         app:fontFamily="@font/sarabun_medium"
         app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,10 +53,10 @@
         android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="text"
         android:padding="12dp"
         android:text="@string/sign_up"
         android:textSize="17sp"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/bottom_guideline" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -65,9 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:paddingEnd="8dp"
+        android:text="@string/already_have_an_account"
         android:textSize="16sp"
         app:fontFamily="@font/sarabun_bold"
-        android:text="@string/already_have_an_account"
         app:layout_constraintEnd_toStartOf="@+id/sign_in"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -78,11 +78,12 @@
         android:id="@+id/sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:text="@string/sign_in"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#DFB409"
         android:textSize="16sp"
         app:fontFamily="@font/sarabun_light"
-        android:textColor="#F8CC1D"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/already_have_an_account"
         app:layout_constraintTop_toTopOf="@id/already_have_an_account" />

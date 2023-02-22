@@ -1,9 +1,6 @@
 package com.faithdeveloper.noted.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.paging.*
 import com.faithdeveloper.noted.data.NotedApplication
@@ -23,6 +20,7 @@ class NotesListViewModel(
     ViewModel() {
     private val _notes = loadNotes()
     val notes: LiveData<PagingData<Note>> get() = _notes
+
 
 
     private fun loadNotes() = Pager(
@@ -62,5 +60,4 @@ class NotesListViewModel(
             }
         }
     }
-
 }
