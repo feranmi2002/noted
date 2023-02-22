@@ -11,15 +11,14 @@
 Noted utilizes the **MVVM** architecture to ensure clean code and optimum performance. It makes use of the following: **LiveData**, **PreferenceDataStore**, **Coroutines**, **NavigationUI**, **Paging**
 
 ## Screenshots
-![Screenshot_20230222_201357](https://user-images.githubusercontent.com/60087143/220746237-60de618f-31ff-4c38-91c3-e50add5b66b8.png)
-![Screenshot_20230222_202508](https://user-images.githubusercontent.com/60087143/220746317-a0787bd2-8683-4140-a1cb-066ae53d732d.png)
-![Screenshot_20230222_202536](https://user-images.githubusercontent.com/60087143/220746371-8d6005d8-bd10-4551-9bf4-a3221b57e6d4.png)
-![Screenshot_20230222_202617](https://user-images.githubusercontent.com/60087143/220746428-1389195b-b81c-4b61-8a4a-91e10ac49cb3.png)
+![resized2](https://user-images.githubusercontent.com/60087143/220750253-976cd3dd-2fe8-442c-b184-1a313c0b8b8a.png)
+![resized3](https://user-images.githubusercontent.com/60087143/220750465-129d207c-8f63-47f5-abef-ec103467ee77.png)
+![resized4](https://user-images.githubusercontent.com/60087143/220750736-0a2739b7-1798-4390-9d26-5192e7a9cb99.png)
+![resized5](https://user-images.githubusercontent.com/60087143/220750888-bf8acfc7-b6bf-48da-8190-9204aab3682d.png)
+
 
 ## Demo
 https://drive.google.com/file/d/1ys55ySiBltj6Ro5MUtwcZ7OlbKY-yFHd/view?usp=drivesdk
 
 ## Credits
 All icons from [Icon Packs](https://www.iconpacks.com)
-
-
