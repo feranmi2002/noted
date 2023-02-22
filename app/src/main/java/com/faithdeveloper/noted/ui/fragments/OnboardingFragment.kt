@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.faithdeveloper.noted.MainActivity
-import com.faithdeveloper.noted.data.viewmodels.OnBoardingViewModel
+import com.faithdeveloper.noted.viewmodels.OnBoardingViewModel
 import com.faithdeveloper.noted.databinding.OnboardingScreenBinding
 import com.faithdeveloper.noted.ui.bottomsheets.BottomSheet
 import com.faithdeveloper.noted.ui.bottomsheets.BottomSheet.Companion.SIGN_IN_FLAG
@@ -16,7 +16,7 @@ import com.faithdeveloper.noted.ui.bottomsheets.BottomSheet.Companion.SIGN_UP_FL
 class OnboardingFragment : Fragment() {
     private var _binding: OnboardingScreenBinding? = null
     private lateinit var activity: MainActivity
-    private val viewModel:OnBoardingViewModel by viewModels()
+    private val viewModel: OnBoardingViewModel by viewModels()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!

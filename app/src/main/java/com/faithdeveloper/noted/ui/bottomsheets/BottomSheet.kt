@@ -15,7 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.faithdeveloper.noted.R
 import com.faithdeveloper.noted.data.Result
-import com.faithdeveloper.noted.data.viewmodels.OnBoardingViewModel
+import com.faithdeveloper.noted.viewmodels.OnBoardingViewModel
 import com.faithdeveloper.noted.databinding.BottomSheetBinding
 import com.faithdeveloper.noted.ui.fragments.OnboardingFragmentDirections
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

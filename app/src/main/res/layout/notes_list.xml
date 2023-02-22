@@ -61,6 +61,14 @@
                 tools:itemCount="25"
                 tools:listitem="@layout/note_list_item" />
 
+            <include
+                android:id="@+id/notes_loading"
+                layout="@layout/notes_loading" />
+
+            <include
+                android:id="@+id/empty_note"
+                layout="@layout/empty_note" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
