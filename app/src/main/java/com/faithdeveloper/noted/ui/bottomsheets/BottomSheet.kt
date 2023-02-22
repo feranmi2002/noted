@@ -265,7 +265,7 @@ class BottomSheet(private val flag: String) : BottomSheetDialogFragment() {
         }
 
         viewModel.timer.observe(viewLifecycleOwner) {
-            if (it < 1) {
+            if (it < 1200) {
                 enableVerification()
             } else {
                 binding.verification.timer.text = formatTime(it)

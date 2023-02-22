@@ -24,7 +24,7 @@ object Util {
     )
 
     fun formatTime(milliseconds: Long) = String.format(
-        "0%2d:0%2d",
+        "%2d:%2d",
         TimeUnit.MILLISECONDS.toMinutes(milliseconds),
         TimeUnit.MILLISECONDS.toSeconds(milliseconds) - TimeUnit.MINUTES.toSeconds(
             TimeUnit.MILLISECONDS.toMinutes(
