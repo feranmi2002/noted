@@ -52,13 +52,12 @@ class NoteWriteFragment : Fragment() {
         backPressedCallback =
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 if (saveNote) {
-                    if (note.id.isEmpty()) {
+                    onBackPressed = if (note.id.isEmpty()) {
                         saveNote()
-                        onBackPressed = true
-                    }
-                    else {
+                        true
+                    } else {
                         updateNote()
-                        onBackPressed = true
+                        true
                     }
                 }
                 findNavController().popBackStack()
@@ -156,8 +155,9 @@ class NoteWriteFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(!onBackPressed) {
-            saveNote()
+        if(!onBackPressed && saveNote) {
+            if (note.trackingId.isEmpty()) saveNote()
+            else updateNote()
         }
     }
 
