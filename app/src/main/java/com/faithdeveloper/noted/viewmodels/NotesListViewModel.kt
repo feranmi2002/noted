@@ -7,6 +7,7 @@ import com.faithdeveloper.noted.data.NotedApplication
 import com.faithdeveloper.noted.data.Repository
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.ui.paging.NotesListPagingSource
+import com.faithdeveloper.noted.ui.utils.Util
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ class NotesListViewModel(
     val database: FirebaseFirestore
 ) :
     ViewModel() {
+    private var sortType: Util.SORT_TYPES = Util.SORT_TYPES.LATEST
     private val _notes = loadNotes()
     val notes: LiveData<PagingData<Note>> get() = _notes
 
@@ -27,7 +29,7 @@ class NotesListViewModel(
         PagingConfig(
             pageSize = NotesListPagingSource.PAGE_SIZE.toInt()
         ), pagingSourceFactory = {
-            NotesListPagingSource(repository, database, auth.currentUser!!.uid)
+            NotesListPagingSource(repository, database, auth.currentUser!!.uid, sortType)
         }, initialKey = null
     ).liveData.cachedIn(viewModelScope)
 
@@ -43,6 +45,10 @@ class NotesListViewModel(
 //              no exception expected
             }
         }
+    }
+
+    fun setSortType(sortType: Util.SORT_TYPES) {
+        this.sortType = sortType
     }
 
     companion object {

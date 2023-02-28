@@ -12,23 +12,19 @@ import com.faithdeveloper.noted.ui.bottomsheets.BottomSheet.Companion.SIGN_IN_FL
 import com.faithdeveloper.noted.ui.bottomsheets.BottomSheet.Companion.SIGN_UP_FLAG
 import com.faithdeveloper.noted.ui.bottomsheets.BottomSheet.Companion.VERIFICATION_FLAG
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
-import java.time.format.DateTimeFormatter
-import java.util.logging.SimpleFormatter
 
 @Suppress("UNCHECKED_CAST")
 class OnBoardingViewModel(
     val repository: Repository,
-    val auth: FirebaseAuth,
-    val database: FirebaseFirestore
+    val auth: FirebaseAuth
 ) : ViewModel() {
 
     private val _result: MutableLiveData<Result> = MutableLiveData()
     val result: LiveData<Result> get() = _result
 
-    private val _timer:MutableLiveData<Long> = MutableLiveData()
-    val timer:LiveData<Long> get() = _timer
+    private val _timer: MutableLiveData<Long> = MutableLiveData()
+    val timer: LiveData<Long> get() = _timer
 
     fun signUp(email: String, password: String) {
         viewModelScope.launch {
@@ -38,13 +34,13 @@ class OnBoardingViewModel(
                 _result.value = verifyEmail()
             } catch (e: Exception) {
 //            Failed to sign up
-                    _result.value = Result.Failure(e, SIGN_UP_FLAG)
+                _result.value = Result.Failure(e, SIGN_UP_FLAG)
             }
         }
     }
 
     fun verifyEmail(): Result {
-        var result: Result = Result.Failure(null)
+        val result: Result = Result.Failure(null)
         viewModelScope.launch {
             try {
                 repository.verifyEmail(auth.currentUser!!)
@@ -61,19 +57,19 @@ class OnBoardingViewModel(
         viewModelScope.launch {
             try {
                 repository.signIn(auth, email, password)
-                if (auth.currentUser!!.isEmailVerified){
+                if (auth.currentUser!!.isEmailVerified) {
                     _result.value = Result.Success(null, SIGN_IN_FLAG)
-                }else{
+                } else {
                     _result.value = verifyEmail()
                 }
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 _result.postValue(Result.Failure(e, SIGN_IN_FLAG))
             }
         }
     }
 
     fun startTimer() {
-        val countDownTimer = object : CountDownTimer(45000, 1000){
+        val countDownTimer = object : CountDownTimer(VERIFICATION_TIME, TIMER_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
                 _timer.value = millisUntilFinished
             }
@@ -89,15 +85,17 @@ class OnBoardingViewModel(
         viewModelScope.launch {
             try {
                 repository.forgotPassword(auth, email)
-                _result.value = com.faithdeveloper.noted.data.Result.Success(null, PASSWORD_FLAG)
-            }catch (e:Exception){
-                _result.value = com.faithdeveloper.noted.data.Result.Failure(e, PASSWORD_FLAG)
+                _result.value = Result.Success(null, PASSWORD_FLAG)
+            } catch (e: Exception) {
+                _result.value = Result.Failure(e, PASSWORD_FLAG)
             }
         }
     }
 
 
     companion object {
+        private const val VERIFICATION_TIME = 4500L
+        private const val TIMER_INTERVAL = 1000L
 
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
@@ -105,11 +103,11 @@ class OnBoardingViewModel(
 
                 return OnBoardingViewModel(
                     repository = application.repository,
-                    auth = application.auth,
-                    database = application.database
+                    auth = application.auth
                 ) as T
             }
         }
     }
+
 
 }

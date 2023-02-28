@@ -15,10 +15,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.faithdeveloper.noted.R
 import com.faithdeveloper.noted.data.NotedApplication
 import com.faithdeveloper.noted.databinding.NotesListBinding
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.ui.adapters.NotePagingAdapter
+import com.faithdeveloper.noted.ui.utils.Util
 import com.faithdeveloper.noted.ui.utils.Util.getIfUserDataIsUploaded
 import com.faithdeveloper.noted.ui.utils.Util.userDataUploaded
 import com.faithdeveloper.noted.viewmodels.NotesListViewModel
@@ -39,8 +41,8 @@ class NotesFragment : Fragment() {
     private var appPausedFlag: Boolean
     private var longClickFlag: Boolean
     private lateinit var backPressedCallback: OnBackPressedCallback
-    private var deleteDialog: AlertDialog? = null
-
+    private var dialog: AlertDialog? = null
+    private var SORT_TYPE = 0
     init {
         appPausedFlag = false
         longClickFlag = false
@@ -110,6 +112,7 @@ class NotesFragment : Fragment() {
         binding.notesListToolbar.notesListToolbar.isVisible = true
         binding.searchToolbar.searchToolbar.isVisible = false
         binding.actionToolbar.count.text = 0.toString()
+        sort()
     }
 
 
@@ -143,16 +146,45 @@ class NotesFragment : Fragment() {
         }
     }
 
+    private fun sort() {
+        binding.notesListToolbar.sort.setOnClickListener {
+            showSortDialog()
+        }
+    }
+
+    private fun showSortDialog() {
+        val sortTypes = resources.getStringArray(R.array.sort_types)
+        val dialogBuilder = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(resources.getString(R.string.sort))
+            .setSingleChoiceItems(
+                resources.getStringArray(R.array.sort_types),
+                SORT_TYPE
+            ) { dialog, which ->
+                when (sortTypes[which]) {
+                    "Latest" -> reload(Util.SORT_TYPES.LATEST)
+                    "Oldest" -> reload(Util.SORT_TYPES.OLDEST)
+                }
+                dialog?.dismiss()
+            }
+        dialog = dialogBuilder.create()
+        dialog?.show()
+    }
+
+    private fun reload(sort_type: Util.SORT_TYPES) {
+        viewModel.setSortType(sort_type)
+        adapter.refresh()
+    }
+
     private fun showDialog(): AlertDialog? {
         deleteFlag = true
-        deleteDialog = MaterialAlertDialogBuilder(requireContext())
+        dialog = MaterialAlertDialogBuilder(requireContext())
             .setMessage("Deleting..")
             .setCancelable(false)
             .create()
-        deleteDialog?.setOnDismissListener {
+        dialog?.setOnDismissListener {
             deleteFlag = false
         }
-        return deleteDialog
+        return dialog
 
     }
 
@@ -188,7 +220,8 @@ class NotesFragment : Fragment() {
                     loadState.refresh is LoadState.NotLoading && adapter.itemCount < 1
                 binding.notesLoading.notesLoading.isVisible =
                     loadState.refresh is LoadState.Loading && appPausedFlag == false
-                if (deleteFlag && loadState.refresh is LoadState.NotLoading) deleteDialog?.dismiss()
+                binding.notesListToolbar.sort.isVisible = adapter.itemCount > 1
+                if (deleteFlag && loadState.refresh is LoadState.NotLoading) dialog?.dismiss()
             }
         }
     }

@@ -1,15 +1,11 @@
 package com.faithdeveloper.noted.ui.utils
 
 import android.content.Context
-import android.os.Build
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -34,21 +30,8 @@ object Util {
     )
 
 
-fun formatDate(lastUpdated: Date?): String {
+fun formatDate(lastUpdated: Date?): kotlin.String {
     return SimpleDateFormat.getDateTimeInstance().format(lastUpdated ?: Date())
-}
-
-fun getDateTime(): String {
-    val result: String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val formatter: DateTimeFormatter =
-            DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
-        LocalDateTime.now().format(formatter)
-    } else {
-        val date1 = Date()
-        SimpleDateFormat.getDateTimeInstance().format(date1)
-    }
-    return result
-
 }
 
 suspend fun Context.userDataUploaded() {
@@ -64,5 +47,10 @@ fun Context.getIfUserDataIsUploaded(): Boolean {
     }
     return userDataUploaded
 }
+
+    enum class SORT_TYPES{
+        LATEST,
+        OLDEST
+    }
 
 }
