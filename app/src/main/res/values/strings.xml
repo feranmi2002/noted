@@ -8,9 +8,10 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="by_continuing_you_agree_to_our_terms_conditions_and_privacy_policy">By continuing, you agree to our Terms,Conditions and Privacy Policy</string>
+    <string name="by_continuing_you_agree_to_our_terms_conditions_and_privacy_policy">By continuing, you agree to our Terms, Conditions and Privacy Policy</string>
     <string name="_continue">Continue</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_info">We have sent a link to your email \'%1$s\'. Click on the link to reset your password </string>
     <string name="resend">Resend</string>
     <string name="notes">Notes</string>
     <string name="search_your_notes">Search your notes</string>

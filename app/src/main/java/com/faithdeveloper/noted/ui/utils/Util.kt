@@ -53,4 +53,10 @@ fun Context.getIfUserDataIsUploaded(): Boolean {
         OLDEST
     }
 
+    enum class NOTE_FRAGMENT_FLAGS{
+        NORMAL_TOOLBAR,
+        ACTION_TOLLBAR,
+        SEARCH_TOOLBAR
+    }
+
 }

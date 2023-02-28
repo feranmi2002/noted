@@ -39,13 +39,13 @@ class NotesFragment : Fragment() {
     private lateinit var idsOfNotesToDelete: MutableList<String>
     private lateinit var positionsOfNotesToDelete: MutableList<Int>
     private var appPausedFlag: Boolean
-    private var longClickFlag: Boolean
     private lateinit var backPressedCallback: OnBackPressedCallback
     private var dialog: AlertDialog? = null
     private var SORT_TYPE = 0
+    private var TOOLBAR_FLAG = Util.NOTE_FRAGMENT_FLAGS.NORMAL_TOOLBAR
+
     init {
         appPausedFlag = false
-        longClickFlag = false
         deleteFlag = false
     }
 
@@ -95,7 +95,7 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         backPressedCallback =
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-                if (longClickFlag) {
+                if (TOOLBAR_FLAG == Util.NOTE_FRAGMENT_FLAGS.ACTION_TOLLBAR) {
                     clicksCancelAction()
                 } else handleOnBackPressed()
             }
@@ -104,10 +104,16 @@ class NotesFragment : Fragment() {
         loadState()
         newNote()
         checkIfUserDataIsUploaded()
+        when (TOOLBAR_FLAG) {
+            Util.NOTE_FRAGMENT_FLAGS.NORMAL_TOOLBAR -> loadNormalToolbar()
+            Util.NOTE_FRAGMENT_FLAGS.ACTION_TOLLBAR -> loadLongClickToolbar()
+            else -> {// do nothing
+            }
+        }
     }
 
     private fun loadNormalToolbar() {
-        longClickFlag = false
+        TOOLBAR_FLAG = Util.NOTE_FRAGMENT_FLAGS.NORMAL_TOOLBAR
         binding.actionToolbar.actionToolbar.isVisible = false
         binding.notesListToolbar.notesListToolbar.isVisible = true
         binding.searchToolbar.searchToolbar.isVisible = false
@@ -117,7 +123,7 @@ class NotesFragment : Fragment() {
 
 
     private fun loadLongClickToolbar() {
-        longClickFlag = true
+        TOOLBAR_FLAG = Util.NOTE_FRAGMENT_FLAGS.ACTION_TOLLBAR
         binding.notesListToolbar.notesListToolbar.isVisible = false
         binding.actionToolbar.actionToolbar.isVisible = true
         binding.searchToolbar.searchToolbar.isVisible = false
@@ -160,6 +166,7 @@ class NotesFragment : Fragment() {
                 resources.getStringArray(R.array.sort_types),
                 SORT_TYPE
             ) { dialog, which ->
+                SORT_TYPE = which
                 when (sortTypes[which]) {
                     "Latest" -> reload(Util.SORT_TYPES.LATEST)
                     "Oldest" -> reload(Util.SORT_TYPES.OLDEST)

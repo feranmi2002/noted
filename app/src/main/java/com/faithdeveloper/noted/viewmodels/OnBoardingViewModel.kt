@@ -23,8 +23,8 @@ class OnBoardingViewModel(
     private val _result: MutableLiveData<Result> = MutableLiveData()
     val result: LiveData<Result> get() = _result
 
-    private val _timer: MutableLiveData<Long> = MutableLiveData()
-    val timer: LiveData<Long> get() = _timer
+    private val _timer: MutableLiveData<Result> = MutableLiveData()
+    val timer: LiveData<Result> get() = _timer
 
     fun signUp(email: String, password: String) {
         viewModelScope.launch {
@@ -68,10 +68,10 @@ class OnBoardingViewModel(
         }
     }
 
-    fun startTimer() {
+    fun startTimer(flag:String) {
         val countDownTimer = object : CountDownTimer(VERIFICATION_TIME, TIMER_INTERVAL) {
             override fun onTick(millisUntilFinished: Long) {
-                _timer.value = millisUntilFinished
+                _timer.value = Result.Success(millisUntilFinished, flag)
             }
 
             override fun onFinish() {
@@ -94,7 +94,7 @@ class OnBoardingViewModel(
 
 
     companion object {
-        private const val VERIFICATION_TIME = 4500L
+        private const val VERIFICATION_TIME = 45000L
         private const val TIMER_INTERVAL = 1000L
 
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
