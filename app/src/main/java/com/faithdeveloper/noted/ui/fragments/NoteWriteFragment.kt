@@ -52,13 +52,12 @@ class NoteWriteFragment : Fragment() {
         backPressedCallback =
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 if (saveNote) {
-                    if (note.id.isEmpty()) {
+                    onBackPressed = if (note.id.isEmpty()) {
                         saveNote()
-                        onBackPressed = true
-                    }
-                    else {
+                        true
+                    } else {
                         updateNote()
-                        onBackPressed = true
+                        true
                     }
                 }
                 findNavController().popBackStack()
@@ -112,7 +111,7 @@ class NoteWriteFragment : Fragment() {
                 .setMessage("Do you want to discard this note? You won't be able to retrieve it again")
                 .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
                     saveNote = false
-                    if (note.id.isEmpty()) backPressedCallback?.handleOnBackPressed()
+                    if (note.trackingId.isEmpty()) backPressedCallback?.handleOnBackPressed()
                     else {
                         application.deleteNote(listOf(note.trackingId))
                         backPressedCallback?.handleOnBackPressed()
@@ -156,8 +155,9 @@ class NoteWriteFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(!onBackPressed) {
-            saveNote()
+        if(!onBackPressed && saveNote) {
+            if (note.trackingId.isEmpty()) saveNote()
+            else updateNote()
         }
     }
 

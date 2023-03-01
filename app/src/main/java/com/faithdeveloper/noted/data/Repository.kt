@@ -3,6 +3,7 @@ package com.faithdeveloper.noted.data
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.models.PagerResult
 import com.faithdeveloper.noted.models.User
+import com.faithdeveloper.noted.ui.utils.Util
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
@@ -40,15 +41,26 @@ object Repository {
         database: FirebaseFirestore,
         size: Long,
         lastDocumentSnapshot: DocumentSnapshot?,
-        userUid: String
+        userUid: String,
+        sortType: Util.SORT_TYPES
     ): PagerResult {
         val query = if (lastDocumentSnapshot == null) {
             database.collection(USERS).document(userUid).collection(NOTES)
-                .orderBy(LAST_UPDATED, Query.Direction.DESCENDING)
+                .orderBy(
+                    LAST_UPDATED, when (sortType) {
+                        Util.SORT_TYPES.LATEST -> Query.Direction.DESCENDING
+                        else -> Query.Direction.ASCENDING
+                    }
+                )
                 .limit(size)
         } else {
             database.collection(USERS).document(userUid).collection(NOTES)
-                .orderBy(LAST_UPDATED, Query.Direction.DESCENDING)
+                .orderBy(
+                    LAST_UPDATED, when (sortType) {
+                        Util.SORT_TYPES.LATEST -> Query.Direction.DESCENDING
+                        else -> Query.Direction.ASCENDING
+                    }
+                )
                 .limit(size).startAfter(lastDocumentSnapshot)
         }
         val result = query.get().await()

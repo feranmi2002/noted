@@ -19,48 +19,50 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad4e2df5-a03a-4e87-9d80-19ec4b4afdad" name="Changes" comment="Fixed many bugs. Implemented writing and saving a note">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/search_background_selected.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_add_24.xml" afterDir="false" />
+    <list default="true" id="ad4e2df5-a03a-4e87-9d80-19ec4b4afdad" name="Changes" comment="Added sort feature">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/forgot_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/NotedApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/NotedApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/models/Note.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/models/Note.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/adapters/NotePagingAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/adapters/NotePagingAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher-playstore.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_launcher-playstore.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NoteWriteFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NoteWriteFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/utils/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/utils/Util.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/NotesListViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/NotesListViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/pencil.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/search_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/search_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/action_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/action_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/empty_note.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/empty_note.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/note_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/note_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notes_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notes_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notes_list_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notes_list_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notes_loading.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notes_loading.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/onboarding_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/onboarding_screen.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/search_toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/search_toolbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/sign_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/write_note.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/write_note.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[0629837167012158]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -82,11 +84,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="navigationResourceFile" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
         <option value="resourceFile" />
+        <option value="Kotlin Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -133,17 +136,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="ScreenRecorderTask.SavePath" value="C:\Users\oluwa\Documents\PROGRAMMING\FILES\Noted files\device-2023-02-22-201745.mp4" />
+    <property name="ScreenshotViewer.SavePath" value="$USER_HOME$/Documents/PROGRAMMING/FILES/Noted files" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="settings.editor.selected.configurable" value="memory.settings" />
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\oluwa\AndroidStudioProjects\Noted\app\src\main\res\layout" />
       <recent name="C:\Users\oluwa\AndroidStudioProjects\Noted\app\src\main\res\drawable-v24" />
       <recent name="C:\Users\oluwa\AndroidStudioProjects\Noted\app" />
       <recent name="C:\Users\oluwa\AndroidStudioProjects\Noted\app\src\main\res\drawable" />
@@ -397,7 +403,42 @@
       <option name="project" value="LOCAL" />
       <updated>1677063379226</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Perfected the app by fixing many bugs">
+      <created>1677091925865</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1677091925865</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fixed bug in timer for verification">
+      <created>1677092664401</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1677092664401</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Fixed note deletion bug">
+      <created>1677099843084</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1677099843084</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Fixed note deletion bug again">
+      <created>1677540563535</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1677540563535</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added sort feature">
+      <created>1677544291450</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1677544291450</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -449,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Started App" />
     <MESSAGE value="Added potential fonts" />
     <MESSAGE value="Built Onboarding layout and added necessary layouts" />
     <MESSAGE value="Added sign_up" />
@@ -470,95 +510,70 @@
     <MESSAGE value="Updated paging adapter" />
     <MESSAGE value="Fixed a bug about not checking if user Data has been previously uploaded" />
     <MESSAGE value="Fixed many bugs. Implemented writing and saving a note" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed many bugs. Implemented writing and saving a note" />
+    <MESSAGE value="Perfected the app by fixing many bugs" />
+    <MESSAGE value="Fixed bug in timer for verification" />
+    <MESSAGE value="Fixed note deletion bug" />
+    <MESSAGE value="Fixed note deletion bug again" />
+    <MESSAGE value="Added sort feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added sort feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>40</line>
+          <line>36</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>82</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>83</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>257</line>
+          <line>233</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>324</line>
+          <line>319</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>328</line>
+          <line>323</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>61</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>63</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>65</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>49</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>52</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/viewmodels/OnBoardingViewModel.kt</url>
-          <line>50</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>359</line>
+          <line>374</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/bottomsheets/BottomSheet.kt</url>
-          <line>365</line>
+          <line>380</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/paging/NotesListPagingSource.kt</url>
-          <line>28</line>
+          <line>34</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/data/Repository.kt</url>
-          <line>93</line>
+          <line>98</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt</url>
-          <line>205</line>
+          <line>266</line>
           <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt</url>
+          <line>176</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/faithdeveloper/noted/ui/fragments/NotesFragment.kt</url>
+          <line>170</line>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

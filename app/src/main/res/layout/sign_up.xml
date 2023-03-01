@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#12BB86FC"
-    android:id="@+id/sign_up"
+    android:padding="16dp"
     android:visibility="invisible"
-    tools:visibility="visible"
-    android:padding="16dp">
+    tools:visibility="visible">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_name_layout"
+        android:id="@+id/email_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,26 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/user_name_text_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:inputType="text"
-            tools:text="Faith" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/user_name_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_text_input"
@@ -74,8 +54,8 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:enabled="false"
         android:layout_marginTop="8dp"
+        android:enabled="false"
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,4 +74,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/continued" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

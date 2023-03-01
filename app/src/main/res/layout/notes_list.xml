@@ -26,16 +26,17 @@
                 android:layout_height="wrap_content">
 
                 <include
-                    android:id="@+id/notes_list_toolbar"
-                    layout="@layout/notes_list_toolbar" />
-
-                <include
                     android:id="@+id/search_toolbar"
                     layout="@layout/search_toolbar" />
 
                 <include
                     android:id="@+id/action_toolbar"
                     layout="@layout/action_toolbar" />
+
+
+                <include
+                    android:id="@+id/notes_list_toolbar"
+                    layout="@layout/notes_list_toolbar" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -43,7 +44,7 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,7 +55,6 @@
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
