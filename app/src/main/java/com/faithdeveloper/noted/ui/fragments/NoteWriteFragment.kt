@@ -1,6 +1,5 @@
 package com.faithdeveloper.noted.ui.fragments
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.faithdeveloper.noted.R
 import com.faithdeveloper.noted.data.NotedApplication
+import com.faithdeveloper.noted.databinding.DeleteDialogBinding
 import com.faithdeveloper.noted.databinding.WriteNoteBinding
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.ui.utils.Util
@@ -79,6 +81,9 @@ class NoteWriteFragment : Fragment() {
                     lastUpdated = null
                 }
             )
+            Snackbar.make(binding.root, getString(R.string.note_updated), Snackbar.LENGTH_SHORT).show()
+        }else{
+            Snackbar.make(binding.root, getString(R.string.note_discarded), Snackbar.LENGTH_SHORT).show()
         }
     }
 
@@ -94,6 +99,9 @@ class NoteWriteFragment : Fragment() {
                     lastUpdated = null
                 }
             )
+            Snackbar.make(binding.root, getString(R.string.note_saved), Snackbar.LENGTH_SHORT).show()
+        }else{
+            Snackbar.make(binding.root, getString(R.string.note_discarded), Snackbar.LENGTH_SHORT).show()
         }
     }
 
@@ -106,20 +114,25 @@ class NoteWriteFragment : Fragment() {
 
     private fun delete() {
         binding.delete.setOnClickListener {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Delete Note")
-                .setMessage("Do you want to discard this note? You won't be able to retrieve it again")
-                .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-                    saveNote = false
-                    if (note.trackingId.isEmpty()) backPressedCallback?.handleOnBackPressed()
-                    else {
-                        application.deleteNote(listOf(note.trackingId))
-                        backPressedCallback?.handleOnBackPressed()
-                    }
-                })
-                .setNegativeButton("CANCEL", DialogInterface.OnClickListener { dialog, which ->
-//                    do nothing
-                }).create().show()
+            var dialog: AlertDialog? = null
+            val deleteDialogBinding =
+                DeleteDialogBinding.inflate(LayoutInflater.from(requireContext()), null, false)
+            deleteDialogBinding.cancelButton.setOnClickListener {
+                dialog?.dismiss()
+            }
+            deleteDialogBinding.confirmButton.setOnClickListener {
+                dialog?.dismiss()
+                saveNote = false
+                if (note.trackingId.isEmpty()) backPressedCallback?.handleOnBackPressed()
+                else {
+                    application.deleteNote(listOf(note.trackingId))
+                    backPressedCallback?.handleOnBackPressed()
+                }
+            }
+
+            dialog = MaterialAlertDialogBuilder(requireContext())
+                .setView(deleteDialogBinding.root).create()
+            dialog.show()
         }
     }
 
@@ -155,7 +168,7 @@ class NoteWriteFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(!onBackPressed && saveNote) {
+        if (!onBackPressed && saveNote) {
             if (note.trackingId.isEmpty()) saveNote()
             else updateNote()
         }

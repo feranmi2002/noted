@@ -24,4 +24,10 @@
     <string name="getting_your_notes">Getting your notes..</string>
     <string name="you_have_no_notes">You have no notes</string>
     <string name="sort">Sort</string>
+    <string name="delete_info">Do you want to discard this note(s)? You won\'t be able to retrieve again</string>
+    <string name="cancel">cancel</string>
+    <string name="delete">delete</string>
+    <string name="note_saved">Note Saved</string>
+    <string name="note_updated">Note Updated</string>
+    <string name="note_discarded">Empty note discarded</string>
 </resources>

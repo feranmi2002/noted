@@ -1,6 +1,5 @@
 package com.faithdeveloper.noted.ui.fragments
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +16,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.faithdeveloper.noted.R
 import com.faithdeveloper.noted.data.NotedApplication
+import com.faithdeveloper.noted.databinding.DeleteDialogBinding
 import com.faithdeveloper.noted.databinding.NotesListBinding
 import com.faithdeveloper.noted.models.Note
 import com.faithdeveloper.noted.ui.adapters.NotePagingAdapter
@@ -134,22 +134,30 @@ class NotesFragment : Fragment() {
 
     private fun delete() {
         binding.actionToolbar.delete.setOnClickListener {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Delete Note(s)")
-                .setMessage("Do you want to discard this note(s)? You won't be able to retrieve again")
-                .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-                    application.deleteNote(idsOfNotesToDelete)
-                    clicksCancelAction()
-                    appPausedFlag = true
-                    adapter.refresh()
-                    showDialog()?.show()
-                    idsOfNotesToDelete = mutableListOf()
-                    positionsOfNotesToDelete = mutableListOf()
-                })
-                .setNegativeButton("CANCEL", DialogInterface.OnClickListener { dialog, which ->
-//                    do nothing
-                }).create().show()
+
+            var dialog: AlertDialog? = null
+            val deleteDialogBinding =
+                DeleteDialogBinding.inflate(LayoutInflater.from(requireContext()), null, false)
+            deleteDialogBinding.cancelButton.setOnClickListener {
+                dialog?.dismiss()
+            }
+            deleteDialogBinding.confirmButton.setOnClickListener {
+                dialog?.dismiss()
+                showDialog()?.show()
+                application.deleteNote(idsOfNotesToDelete)
+                clicksCancelAction()
+                appPausedFlag = true
+                adapter.refresh()
+                idsOfNotesToDelete = mutableListOf()
+                positionsOfNotesToDelete = mutableListOf()
+            }
+
+            dialog = MaterialAlertDialogBuilder(requireContext())
+                .setView(deleteDialogBinding.root).create()
+            dialog.show()
+
         }
+
     }
 
     private fun sort() {
